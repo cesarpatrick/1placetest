@@ -1,0 +1,85 @@
+= Java EE Project Sample
+
+Project layout for a wildfly application using JavaEE8 deployed as an EAR archive that contains a JSF WAR and an EJB JAR
+
+
+This example consists of the following Maven projects, each with a shared parent.
+
+[cols="30%,70%",options="headers"]
+|===
+|Project |Description
+
+| `ejb`
+| This project contains the EJB code and can be built independently to produce the JAR archive.
+
+| `web`
+| This project contains the JSF pages and the managed bean.
+
+| `ear`
+| This project builds the EAR artifact and pulls in the EJB and web artifacts.
+|===
+
+
+== Requirements
+
+* JavaSDK 8+
+* Wildfly Application Server 16.0.0.Final Java EE Full & Web Distribution[https://wildfly.org/downloads/]
+* Maven 3+
+
+== Maven Setup
+
+You will need to update/create a maven setting.xml file.   e.g. /User/<username>/.m2/settings.xml
+
+ copy setting.xml  to /Users/<username>/.m2/
+
+
+== Notes
+
+* The project uses the default wildfly datasource  ExampleDS 
+* It uses the H2 Database
+* To view the database you need to deploy the h2-console [https://github.com/jboss-developer/jboss-eap-quickstarts/tree/7.1.0.GA/h2-console]
+
+== Sample Application
+
+=== Requirement:
+
+Create a JSF application using the JavaEE8 api.  It must demonstrate the following api
+
+* Enterprise java beans (EJB)
+* Entity Bean (JPA )
+* Java Bean validation (BV)
+* Contexts And Dependency Injection (CDI)
+* Javaserver Faces 2.3 (JSF)
+
+
+The JSF page must use the Primefaces Library (This is already in the pom.xml)
+Don’t worry about the UI and UX for the applications.  
+I more interested in how you organise/structure your java code
+
+The application will have 3 Entities and the following relationship between the entities
+
+image::entityDiagram.png[]
+ 
+
+The Application must have the following functionality
+
+* list the drivers using a <p:dataTable> 
+* add a driver
+* edit a driver
+* add a new Taxi Ride.  On this page you have to select a driver, and add at least one new passenger or existing passengers from previous taxi rides.
+* lists the taxi rides. You should be able to search/filter the tax rides by Date, driver, passengers. <p:calendar> and <p:pickList>
+
+== H2 Console
+
+Access the H2 Console
+
+ You can access the console at the following URL: http://localhost:8080/h2-console/.
+
+You need to enter the JDBC URL, and credentials. To access the test database that the greeter quickstart uses, enter these details:
+
+----
+JDBC URL: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+User Name: sa
+Password: sa
+Click on the Test Connection button to make sure you can connect. If you can, go ahead and click Connect.
+----
