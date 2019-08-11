@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" 
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:cc="http://xmlns.jcp.org/jsf/composite/components"
+    xmlns:p="http://primefaces.org/ui">
+<f:view>   
+    <h:head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	
+   </h:head>
+   <h:body>	   		
+	  <h:form id="driverForm"> 
+	   		<p:panel header="Add Driver">
+		   		<p:messages id="messages" showDetail="true" closable="true">
+			        <p:autoUpdate />
+			    </p:messages>
+		      	<h:panelGrid columns="2" cellpadding="4">
+			        <h:outputText value="Name: " />
+			        <p:inputText id="name" value="#{driverBean.driver.name}" maxlength="100" />
+			
+			        <h:outputText value="Licence number: " />
+			        <p:inputText id="licenceNo" value="#{driverBean.driver.licenceNo}" maxlength="10"/>
+					
+					<p:commandButton value="Go Back" id="withIcon" action="#{driverBean.backToList}"  />
+					<p:commandButton value="Save" id="nonAjax" action="#{driverBean.save}" ajax="false" />
+		     	 </h:panelGrid>
+    		</p:panel>    	
+    		 
+	 	 </h:form> 
+
+   </h:body>
+  </f:view>
+  </html>
+
+

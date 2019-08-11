@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" 
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:cc="http://xmlns.jcp.org/jsf/composite/components"
+    xmlns:p="http://primefaces.org/ui">
+<f:view>   
+    <h:head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	
+   </h:head>
+   <h:body>	   		
+	  <h:form id="passegerForm"> 
+	   		<p:panel header="Add Passeger">
+		   		<p:messages id="messages" showDetail="true" closable="true">
+			        <p:autoUpdate />
+			    </p:messages>
+		      	<h:panelGrid columns="2" cellpadding="4">
+			        <h:outputText value="First Name: " />
+			        <p:inputText id="name" value="#{passegerBean.passeger.firstName}" maxlength="100"/>
+			
+			        <h:outputText value="Last Name: " />
+			        <p:inputText id="lastName" value="#{passegerBean.passeger.lastName}" maxlength="10" />
+			        
+			        <h:outputText value="Age: " />
+			      	<p:inputText id="age" value="#{passegerBean.passeger.age}" maxlength="3" >
+			        	<p:keyFilter regEx="/[\d\-\.]/"/> 
+			        </p:inputText>
+					
+					<p:commandButton value="Go Back" id="withIcon"  action="/taxiRideForm.xhtml?faces-redirect=true"  />
+					<p:commandButton value="Save" id="nonAjax" action="#{passegerBean.save}" ajax="false" />
+		     	 </h:panelGrid>
+    		</p:panel>    	
+    		 
+	 	 </h:form> 
+
+   </h:body>
+  </f:view>
+  </html>
+
+

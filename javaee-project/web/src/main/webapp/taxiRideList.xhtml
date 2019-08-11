@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" 
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:cc="http://xmlns.jcp.org/jsf/composite/components"
+    xmlns:p="http://primefaces.org/ui">
+<f:view>   
+    <h:head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   </h:head>
+   <h:body>	
+   		<h:form> 
+   			<p:panel header="Taxi Rides"> 
+   				 <p:commandButton value="Back" id="back" action="/index.xhtml?faces-redirect=true" style="margin-right:20px;"/>
+   				 <p:commandButton value="Add Taxi Ride" id="addTaxiRide"  action="/taxiRideForm.xhtml?faces-redirect=true"  style="margin-right:20px;" />
+   				<h:panelGrid>
+				    <p:dataTable var="taxiRides" value="#{taxiRideBean.taxiRides}">
+					  <p:column headerText="ID"> <h:outputText value="#{taxiRides.id}"/></p:column>
+					  <p:column headerText="Driver"> <h:outputText value="#{taxiRides.driver.name}"/></p:column>
+					  <p:column headerText="Cost"> <h:outputText value="#{taxiRides.cost}"/></p:column>
+					  <p:column headerText="Duration"> <h:outputText value="#{taxiRides.duration}"/></p:column>
+					  <p:column headerText="Date"> <h:outputText value="#{taxiRides.date}"/></p:column>
+					  <p:column headerText="Destination"> <h:outputText value="#{taxiRides.destination}"/></p:column>
+					  	  
+					</p:dataTable>
+					
+					
+					<h:outputText value="Date: " />
+			        <p:calendar id="date" value="#{taxiRideBean.taxiRideFilter.date}" />
+			        
+					<h:outputText value="Driver: " />
+		      		<h:selectOneMenu value="#{taxiRideBean.taxiRideFilter.driver}"  converter="driverConverter" class="ui-widget ui-state-default ui-corner-all" >		      		 	
+			    		<f:selectItems value="#{taxiRideBean.drivers}" var="driver" 
+			    		itemLabel="#{driver.name}" itemValue="#{driver}" />
+			    	</h:selectOneMenu>
+			    	
+			    	<h:outputText value="Passeger(s)" />
+			    	<p:pickList id="pickList" value="#{taxiRideBean.passegers}" var="passegers"
+			    	 itemLabel="#{passegers.fullName}" itemValue="#{passegers}" converter="passegerConverter"/>
+		      	
+			        
+					<p:commandButton value="Search" id="nonAjax" action="#{taxiRideBean.search}" ajax="false" />
+		     	</h:panelGrid>
+	    	</p:panel>
+    	</h:form>
+		<h1></h1>
+	
+   </h:body>
+  </f:view>
+  </html>
+
+

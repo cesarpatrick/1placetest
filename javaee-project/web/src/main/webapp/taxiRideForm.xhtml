@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" 
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:cc="http://xmlns.jcp.org/jsf/composite/components"
+    xmlns:p="http://primefaces.org/ui">
+<f:view>   
+    <h:head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<script type="text/javascript">
+	function currencyMask(i) {
+		var v = i.value.replace(/\D/g,'');
+		v = (v/100).toFixed(2) + '';
+		v = v.replace(".", ",");
+		v = v.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
+		v = v.replace(/(\d)(\d{3}),/g, "$1.$2,");
+		i.value = v;
+	}
+	
+
+	
+	
+	</script>
+	
+	
+   </h:head>
+   <h:body>
+	  <h:form id="taxiRideForm"> 
+	   		<p:panel header="Add Taxi Ride">
+		   		<p:messages id="messages" showDetail="true" closable="true">
+			        <p:autoUpdate />
+			    </p:messages>
+		      	<h:panelGrid columns="2" cellpadding="4">
+		      		<h:outputText value="Driver: " />
+		      		<h:selectOneMenu value="#{taxiRideBean.taxiRide.driver}"  converter="driverConverter" class="ui-widget ui-state-default ui-corner-all" >		      		 	
+			    		<f:selectItems value="#{taxiRideBean.drivers}" var="driver" 
+			    		itemLabel="#{driver.name}" itemValue="#{driver}" />
+			    	</h:selectOneMenu>
+			    	
+			    	<h:outputText value="" />
+			    	<p:commandButton value="Add Passeger" id="addPasseger"  action="/passegerForm.xhtml?faces-redirect=true"  style="margin-right:20px;" />
+			    	<h:outputText value="Passeger(s)" />
+			    	<p:pickList id="pickList" value="#{taxiRideBean.passegers}" var="passegers"
+			    	 itemLabel="#{passegers.fullName}" itemValue="#{passegers}" converter="passegerConverter"/>
+		      	
+			        <h:outputText value="Cost: " />
+			        <p:inputText id="cost" value="#{taxiRideBean.taxiRide.cost}" maxlength="10" >			        
+						<p:keyFilter regEx="/[\d\.\s,]/"/>  
+					</p:inputText>
+			
+			        <h:outputText value="Duration: " />
+			        <p:inputText id="duration" value="#{taxiRideBean.taxiRide.duration}" maxlength="10" >
+			        	<p:keyFilter regEx="/[\d\-\.]/"/>  			        
+			        </p:inputText>
+			        
+			        <h:outputText value="Date: " />
+			        <p:calendar id="date" value="#{taxiRideBean.taxiRide.date}" />
+			        
+			        <h:outputText value="Destination: " />
+			        <p:inputTextarea id="destination" value="#{taxiRideBean.taxiRide.destination}" maxlength="255"/>
+			        
+			        <p:commandButton value="Go Back" id="withIcon" action="#{taxiRideBean.backToList}" />
+					<p:commandButton value="Save" id="nonAjax" action="#{taxiRideBean.save}" ajax="false" />
+			
+		     	 </h:panelGrid>
+    		</p:panel>	    	
+		 </h:form>
+  </h:body> 
+  </f:view>
+  </html>
+
+
