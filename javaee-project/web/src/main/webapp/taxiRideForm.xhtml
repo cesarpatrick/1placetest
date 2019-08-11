@@ -41,7 +41,7 @@
 			    </p:messages>
 		      	<h:panelGrid columns="2" cellpadding="4">
 		      		<h:outputText value="Driver: " />
-		      		<h:selectOneMenu value="#{taxiRideBean.taxiRide.driver}"  converter="driverConverter" class="ui-widget ui-state-default ui-corner-all" >		      		 	
+		      		<h:selectOneMenu value="#{taxiRideBean.taxiRide.driver}"  converter="driverConverter" class="ui-widget ui-state-default ui-corner-all" >    
 			    		<f:selectItems value="#{taxiRideBean.drivers}" var="driver" 
 			    		itemLabel="#{driver.name}" itemValue="#{driver}" />
 			    	</h:selectOneMenu>

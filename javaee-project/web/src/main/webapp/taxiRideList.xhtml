@@ -27,7 +27,8 @@
 					  <p:column headerText="Driver"> <h:outputText value="#{taxiRides.driver.name}"/></p:column>
 					  <p:column headerText="Cost"> <h:outputText value="#{taxiRides.cost}"/></p:column>
 					  <p:column headerText="Duration"> <h:outputText value="#{taxiRides.duration}"/></p:column>
-					  <p:column headerText="Date"> <h:outputText value="#{taxiRides.date}"/></p:column>
+					  <p:column headerText="Date"><h:outputText value="#{taxiRides.date}" >
+    				  <f:convertDateTime pattern="dd.MM.yyyy" /></h:outputText></p:column>
 					  <p:column headerText="Destination"> <h:outputText value="#{taxiRides.destination}"/></p:column>
 					  	  
 					</p:dataTable>
@@ -37,7 +38,7 @@
 			        <p:calendar id="date" value="#{taxiRideBean.taxiRideFilter.date}" />
 			        
 					<h:outputText value="Driver: " />
-		      		<h:selectOneMenu value="#{taxiRideBean.taxiRideFilter.driver}"  converter="driverConverter" class="ui-widget ui-state-default ui-corner-all" >	
+		      		<h:selectOneMenu value="#{taxiRideBean.taxiRideFilter.driver}"  converter="driverConverter" class="ui-widget ui-state-default ui-corner-all" >				    		
 			    		<f:selectItems value="#{taxiRideBean.drivers}" var="driver" 
 			    		itemLabel="#{driver.name}" itemValue="#{driver}" />
 			    	</h:selectOneMenu>

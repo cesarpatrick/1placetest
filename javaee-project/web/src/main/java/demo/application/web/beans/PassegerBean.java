@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 import demo.application.web.dao.PassegerDaoImpl;
+import demo.application.web.entities.Driver;
 import demo.application.web.entities.Passeger;
 
 @Named("passegerBean")
@@ -21,9 +22,17 @@ public class PassegerBean implements Serializable{
 
 	@Transactional(value = TxType.REQUIRES_NEW)
 	public void save() {
-		dao.save(passeger);	
-		passeger = new Passeger();
-		messegersBean.info("The passeger was saved !");	
+		if(passeger.getFirstName() == null || passeger.getFirstName().isEmpty()) {
+			messegersBean.error("First name is required. !");
+		}else if(passeger.getLastName() == null || passeger.getLastName().isEmpty()){
+			messegersBean.error("Last Name is required. !");
+		}else if(passeger.getAge() == null){
+			messegersBean.error("Age is required. !");
+		}else {
+			dao.save(passeger);		
+			passeger = new Passeger();
+			messegersBean.info("The passeger was saved !");		
+		}
 	}
 	
 	public Passeger getPasseger() {
