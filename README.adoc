@@ -58,7 +58,7 @@ I more interested in how you organise/structure your java code
 
 The application will have 3 Entities and the following relationship between the entities
 
-image::entityDiagram.png[]
+https://github.com/cesarpatrick/1placetest/blob/master/javaee-project/entityDiagram.png?raw=true
  
 
 The Application must have the following functionality
