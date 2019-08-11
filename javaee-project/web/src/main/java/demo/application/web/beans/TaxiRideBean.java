@@ -10,6 +10,8 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 
 import org.primefaces.model.DualListModel;
 
@@ -50,6 +52,7 @@ public class TaxiRideBean implements Serializable{
         passegers = new DualListModel<Passeger>(passegersList,passegersTargetList);
     }
 
+	@Transactional(value = TxType.REQUIRES_NEW)
 	public void save() {	
 		List<Passeger> targetPassegers = passegers.getTarget();
 				

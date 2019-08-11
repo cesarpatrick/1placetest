@@ -4,12 +4,15 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 
 import demo.application.web.entities.Driver;
 import demo.application.web.util.JPAUtil;
 
 public class DriverDaoImpl implements DriverDao {
 	
+	@Transactional(value = TxType.REQUIRES_NEW)
 	public Driver save(Driver driver) {	
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();

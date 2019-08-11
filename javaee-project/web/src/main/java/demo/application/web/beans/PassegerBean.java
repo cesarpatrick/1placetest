@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 
 import demo.application.web.dao.PassegerDaoImpl;
 import demo.application.web.entities.Passeger;
@@ -17,6 +19,7 @@ public class PassegerBean implements Serializable{
 	private PassegerDaoImpl dao = new PassegerDaoImpl();
 	private MessegersBean messegersBean = new MessegersBean();
 
+	@Transactional(value = TxType.REQUIRES_NEW)
 	public void save() {
 		dao.save(passeger);	
 		passeger = new Passeger();
