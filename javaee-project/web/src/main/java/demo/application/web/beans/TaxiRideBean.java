@@ -63,13 +63,14 @@ public class TaxiRideBean implements Serializable{
 		}
 	}
 	
-	public void search() {
-		taxiRides = taxiRideDao.findAll();
+	public void search() {		
+		taxiRideFilter.setPasseger(passegers.getTarget());
+		taxiRides = taxiRideDao.findTaxiRideByFilter(taxiRideFilter);
 	}
 	
 	public void backToList() {
 		try {
-			taxiRides = taxiRideDao.findAll();
+			taxiRides = taxiRideDao.findTaxiRideByFilter(new TaxiRide());
 			FacesContext.getCurrentInstance().getExternalContext().redirect("taxiRideList.xhtml");
 		} catch (IOException e) {			
 			e.printStackTrace();

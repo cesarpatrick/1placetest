@@ -7,5 +7,5 @@ import demo.application.web.entities.TaxiRide;
 public interface TaxiRideDao {
 	public TaxiRide save(TaxiRide taxiDrive);
 	public TaxiRide findTaxiRideById(Integer id);
-	public List<TaxiRide> findAll();
+	public List<TaxiRide> findTaxiRideByFilter(TaxiRide taxiDrive);
 }

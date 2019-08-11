@@ -37,7 +37,7 @@
 			        <p:calendar id="date" value="#{taxiRideBean.taxiRideFilter.date}" />
 			        
 					<h:outputText value="Driver: " />
-		      		<h:selectOneMenu value="#{taxiRideBean.taxiRideFilter.driver}"  converter="driverConverter" class="ui-widget ui-state-default ui-corner-all" >		      		 	
+		      		<h:selectOneMenu value="#{taxiRideBean.taxiRideFilter.driver}"  converter="driverConverter" class="ui-widget ui-state-default ui-corner-all" >	
 			    		<f:selectItems value="#{taxiRideBean.drivers}" var="driver" 
 			    		itemLabel="#{driver.name}" itemValue="#{driver}" />
 			    	</h:selectOneMenu>
