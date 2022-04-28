@@ -37,7 +37,7 @@
         <version.wildfly.maven.plugin>2.0.1.Final</version.wildfly.maven.plugin>
 
         <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
-        <version.jboss.bom>16.0.0.Final</version.jboss.bom>
+        <version.jboss.bom>23.0.2.Final</version.jboss.bom>
         <version.wildfly>16.0.0.Final</version.wildfly>
         
         <primefaces.version>6.2</primefaces.version>
